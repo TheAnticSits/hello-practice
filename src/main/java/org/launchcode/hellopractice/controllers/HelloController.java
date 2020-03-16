@@ -10,7 +10,7 @@ public class HelloController {
 
     //tells springboot this will return plain text not html
     //getmapping will only accept get requests
-    @GetMapping
+    @GetMapping("hello")
     @ResponseBody
     public String hello(){
         return "Hello, Spring!";
