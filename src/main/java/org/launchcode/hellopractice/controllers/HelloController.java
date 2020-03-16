@@ -1,10 +1,7 @@
 package org.launchcode.hellopractice.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 //Controller lets springboot know this will handle http requests
 @Controller
@@ -29,7 +26,8 @@ public class HelloController {
     }
 
     //handles request of the form /hello?name=variable
-    @GetMapping("hello")
+    //with requestmapping it accepts both Get and Post requests
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "hello")
     @ResponseBody
     public String helloWithQueryParam(@RequestParam String name){
         return "Hello, " + name + "!";
@@ -44,12 +42,13 @@ public class HelloController {
         return "Hello, " + name + "!";
     }
 
+    //a form is by default get
     @GetMapping("form")
     @ResponseBody
     public String helloForm(){
         return "<html>" +
                 "<body>" +
-                "<form action='hello'>" + //submit a request to /hello
+                "<form action='hello' method='post'>" + //submit a request to /hello
                 "<input type='text' name='name'>" +
                 "<input type='submit' value='Greet me!'>" +
                 "</form>" +
