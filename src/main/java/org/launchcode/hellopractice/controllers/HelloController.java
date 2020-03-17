@@ -23,9 +23,10 @@ public class HelloController {
 
     //responds to /hello/Launchcode
     @RequestMapping("hello/{name}")
-    @ResponseBody
-    public String helloAgain(@PathVariable String name){
-        return "Hello, " + name + "!";
+    public String helloAgain(@PathVariable String name, Model model){
+        String greeting = "Hello, " + name + "!";
+        model.addAttribute("greeting", greeting);
+        return "hello";
     }
 
     @GetMapping("form")
