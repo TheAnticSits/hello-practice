@@ -15,12 +15,6 @@ public class HelloController {
         return "hello";
     }
 
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    @ResponseBody
-    public String helloWithQueryParam(@RequestParam String name){
-        return "Hello, " + name + "!";
-    }
-
     //responds to /hello/Launchcode
     @RequestMapping("hello/{name}")
     public String helloAgain(@PathVariable String name, Model model){
